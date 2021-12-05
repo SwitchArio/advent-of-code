@@ -18,7 +18,6 @@ def checkVictory(c_board):
         if flag: return True
     return False
 
-
 def boardsChecker(_boards, solution):
     for a, _board in enumerate(_boards):
         for b, _line in enumerate(_board):
@@ -30,19 +29,19 @@ def boardsChecker(_boards, solution):
     return None
 
 
-def boardsLogic(_solutions, _boards):
+def boardsLogistic(_solutions, _boards):
     lastWinnerBoard = None
     lastSolution = None
-    updatedList = _boards
+    remainingBoards = _boards
 
     for solution in _solutions:
         while True:
-            aBoard = boardsChecker(updatedList, solution)
+            aBoard = boardsChecker(remainingBoards, solution)
             if aBoard is None:
                 break
             lastWinnerBoard = aBoard
             lastSolution = solution
-            updatedList.remove(aBoard)
+            remainingBoards.remove(aBoard)
 
     return lastWinnerBoard, lastSolution
 
@@ -60,7 +59,7 @@ for line in lines[1:]:
         line = line.replace("\n", "")
         board.append(line.split(" "))
 
-winnerBoard, lastSolution = boardsChecker(solutions, boards)
+winnerBoard, lastSolution = boardsLogistic(solutions, boards)
 UnmarkedNumebers = 0
 
 for line in winnerBoard:
