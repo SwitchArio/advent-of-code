@@ -44,6 +44,7 @@ for line in lines:
         a_points.append(Point(a[0], a[1]))
         b_points.append(Point(b[0], b[1]))
 
+# finding the higher x and y value for the board width and heigh
 hX, hY = 0, 0
 
 for a in a_points:
@@ -53,14 +54,16 @@ for b in b_points:
     if b.x > hX: hX = b.x
     if b.y > hY: hY = b.y
 
+# setup of the board: {hX} number of elements for each of {hY} lists
 board = [[0 for x in range(hX + 1)] for y in range(hY + 1)]
-# hX number of elements, in hY lists
 
+# filling the cells with the lines
 for j, a in enumerate(a_points):
     pointsToMark = a.getPointsBetween(b_points[j])
     for pToMark in pointsToMark:
         board[pToMark[1]][pToMark[0]] += 1
 
+# counting the intersections
 intersectionsCounter = 0
 for raw in board:
     for cell in raw:
