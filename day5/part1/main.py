@@ -11,6 +11,26 @@ class Point:
     def __str__(self):
         return f"{self.x} ; {self.y}"
 
+    def getPointsBetween(self, point):
+        if self.x == point.x:
+            if point.y > self.y:
+                bigger = point.y
+                lower = self.y
+            else:
+                bigger = self.y
+                lower = point.y
+
+            return [[self.x, y] for y in range(bigger, lower - 1, -1)]
+        else:
+            if point.x > self.x:
+                bigger = point.x
+                lower = self.x
+            else:
+                bigger = self.x
+                lower = point.x
+
+            return [[x, self.y] for x in range(bigger, lower - 1, -1)]
+
 
 a_points, b_points = [], []
 
@@ -24,8 +44,6 @@ for line in lines:
         a_points.append(Point(a[0], a[1]))
         b_points.append(Point(b[0], b[1]))
 
-
-board = [[]]
 hX, hY = 0, 0
 
 for a in a_points:
@@ -35,15 +53,18 @@ for b in b_points:
     if b.x > hX: hX = b.x
     if b.y > hY: hY = b.y
 
-for c in range(hX):
-    for r in range(hY):
-        board[r][c] = 0
+board = [[0 for x in range(hX + 1)] for y in range(hY + 1)]
+# hX number of elements, in hY lists
 
-print(f"{hX} {hY}")
-# https://stackoverflow.com/questions/6667201/how-to-define-a-two-dimensional-array
+for j, a in enumerate(a_points):
+    pointsToMark = a.getPointsBetween(b_points[j])
+    for pToMark in pointsToMark:
+        board[pToMark[1]][pToMark[0]] += 1
 
+intersectionsCounter = 0
+for raw in board:
+    for cell in raw:
+        if cell >= 2:
+            intersectionsCounter += 1
 
-
-
-# for i in range(len(a_points)):
-#     print(f"{a_points[i]} - {b_points[i]}")
+print(f"{intersectionsCounter}")
