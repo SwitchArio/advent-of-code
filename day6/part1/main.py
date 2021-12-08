@@ -29,7 +29,7 @@ for day in range(DAYS):
         else:
             saved_value = all_fish[i - 1]  # save the value of the next one
             all_fish[i - 1] = next_value  # put the value in the next one
-            next_value = saved_value  # the saved values is becomes the next value
+            next_value = saved_value  # the saved value is becomes the next value
 total = 0
 for i in range(9):
     total += all_fish[i]
