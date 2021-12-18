@@ -1,6 +1,20 @@
 with open("input.txt") as f:
     lines = f.readlines()
 
+right_patterns = {
+    "abcefg": "0",
+    "cf": "1",
+    "acdeg": "2",
+    "acdfg": "3",
+    "bcdf": "4",
+    "abdfg": "5",
+    "abdefg": "6",
+    "acf": "7",
+    "abcdefg": "8",
+    "abcdfg": "9",
+}
+
+    
 
 def get_number_by_len(numbers, lenght, not_needed_chars=None, needed_chars=None):
     for number in numbers:
@@ -17,20 +31,6 @@ def get_number_by_len(numbers, lenght, not_needed_chars=None, needed_chars=None)
                         isRight = False
                 if isRight: return number
     return None
-
-
-right_patterns = {
-    "abcefg": "0",
-    "cf": "1",
-    "acdeg": "2",
-    "acdfg": "3",
-    "bcdf": "4",
-    "abdfg": "5",
-    "abdefg": "6",
-    "acf": "7",
-    "abcdefg": "8",
-    "abcdfg": "9",
-}
 
 
 def decode_number(keys, values):
