@@ -7,18 +7,16 @@ for line in lines:
     line = line.replace("\n", "")
     heightmap.append(list(line))
 
-for raw in range(len(heightmap)):
-    for column in range(len(heightmap[raw])):
+for raw in range(100):
+    for column in range(100):
         isLow = True
         height = int(heightmap[raw][column])
-
-        if height == 9: isLow = False
 
         if column > 0:
             if height > int(heightmap[raw][column - 1]):
                 isLow = False
 
-        if column + 1 < len(heightmap[raw]):
+        if column != 99:
             if height > int(heightmap[raw][column + 1]):
                 isLow = False
 
@@ -26,7 +24,7 @@ for raw in range(len(heightmap)):
             if height > int(heightmap[raw - 1][column]):
                 isLow = False
 
-        if raw + 1 < len(heightmap):
+        if raw != 99:
             if height > int(heightmap[raw + 1][column]):
                 isLow = False
 
