@@ -9,7 +9,6 @@ def basin_explorer(raw, column, heightmap):
     if height == 9:
         return 0, heightmap
     basin_size = 1
-
     heightmap[raw][column] = "x"
 
     if column > 0:
