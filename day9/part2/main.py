@@ -6,9 +6,9 @@ heightmap, largest_sizes = [], [0, 0, 0]
 
 def basin_explorer(raw, column, heightmap):
     height = int(heightmap[raw][column])
-    basin_size = 1
     if height == 9:
         return 0, heightmap
+    basin_size = 1
 
     heightmap[raw][column] = "x"
 
