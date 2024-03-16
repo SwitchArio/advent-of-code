@@ -21,4 +21,4 @@ def cavesWalker(start, allConnections: list[str]):
 
 
 counter = cavesWalker("start", lines)
-print(counter)
+print(counter) #5920
