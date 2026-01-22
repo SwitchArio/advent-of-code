@@ -29,9 +29,6 @@ StartPos = (0, 0)
 FinalPos = (MaxRows - 1, MaxColumns - 1)
 
 # Using tuple + set + min for Dijstra
-unvisited_list = {(i, j) for i in range(MaxRows) for j in range(MaxColumns)}
-unvisited_list.remove((0, 0))
-
 visited_list = set()
 valuing_list = {StartPos}
 
@@ -58,3 +55,4 @@ xF, yF = FinalPos
 print(DistancesGrid[xF][yF])
 
 print("--- %s seconds ---" % (round(time.time() - start_time, 5)))
+
